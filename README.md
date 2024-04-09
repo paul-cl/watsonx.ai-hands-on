@@ -1,2 +1,2 @@
 # watsonx.ai-hands-on
-Repository for watsonx.ai hands-on lab.
+watsonx.ai hands-on lab 자료입니다.
