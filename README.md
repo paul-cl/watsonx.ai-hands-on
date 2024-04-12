@@ -1,6 +1,15 @@
 # watsonx.ai-hands-on
 watsonx.ai hands-on lab 자료입니다.
 
+### IBM에서 제공하는 모델 정보
+https://dataplatform.cloud.ibm.com/docs/content/wsj/analyze-data/fm-models.html?context=wx&audience=wdp
+
+### IBM에서 더이상 제공하지 않는 모델 정보
+https://www.ibm.com/docs/en/watsonx-as-a-service?topic=models-foundation-model-lifecycle
+
+### 모델 ID 참조 사이트
+https://ibm.github.io/watsonx-ai-python-sdk/fm_model.html
+
 
 # lab2. Prompt
 ### 1. Zero Shot
@@ -111,6 +120,8 @@ print('Project Bucket Name: {0}'.format(project.get_project_bucket_name()))
 print('Project Assets (Connections): {0}'.format(project.get_assets(asset_type='connection')))
 ```
 
+파일명을 수정하세요.
+예:```이름_Generated.csv```
 ```python
-project.save_data(data=df_1.to_csv(index=False), file_name='Generated.csv', overwrite=True
+project.save_data(data=df_1.to_csv(index=False), file_name='<my_name>_Generated.csv', overwrite=True
 ```
