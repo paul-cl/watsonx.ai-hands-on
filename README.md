@@ -11,8 +11,24 @@ https://www.ibm.com/docs/en/watsonx-as-a-service?topic=models-foundation-model-l
 https://ibm.github.io/watsonx-ai-python-sdk/fm_model.html
 
 
-# lab2. Prompt
+# lab2. Prompt Engineering
 ### 1. Zero Shot
+
+#### Structured Mode (p13)
+Instruction
+```
+주어진 특성을 가진 회사에 대한 5문장 마케팅 메시지를 생성합니다.
+```
+프롬픔트를 실행합니다.
+```
+특성:
+회사소개 - 골든뱅크
+제안에는 수수료 없음, 5% 이자율, 최소 잔액 없음
+어조 – 정보 제공
+응답 요청 - 링크를 클릭하십시오.
+종료일 - 7월 15일
+```
+
 #### Freedom Mode (p15)
 prompt
 ```
@@ -22,13 +38,19 @@ Read the following paragraph and list all the issues.
 I called your helpdesk
 multiple times and every time I waited 10-15 minutes before I gave up. The first time I got through, the line got cut suddenly and I had to call back. This is just not helpful. When I finally got through like after 3 days (yes, 3 days) your agent kept going over a long checklist of trivial things and asking me to verify, after I repeatedly told the agent that I am an experienced user and I know what I am doing. It was a complete waste of time. After like an eternity of this pointless conversation, I was told that an SME will contact me. That – was 2 days ago. What is the problem with your support system?
 
+```
+문장 아래에 다음을 추가합니다.
+```
 The list of issues is as follows:
-
+```
+문장 아래에 다음을 추가합니다.
+```
+1.
 ```
 
 ### 2. One Shot
 #### Structured Mode Example(p20)
-예제를 입력합니다.   
+##### 첫번째 예제를 입력합니다.   
 input
 ```
 The following paragraph is a consumer complaint. Read the following paragraph and list all the issues.
@@ -43,6 +65,7 @@ The list of issues is as follows:
 3) The information is outdated.
 
 ```
+
 프롬프트를 실행합니다.
 ```
 The following paragraph is a consumer complaint. Read the following paragraph and list all the issues. 
@@ -50,9 +73,8 @@ I called your help desk multiple times and every time I waited 10-15 minutes bef
 
 ```
 
-
 ### 3. Few-Shot Prompt
-예제를 입력합니다.   
+##### 두번째 예제를 입력합니다.   
 input
 ```
 The following paragraph is a consumer complaint. Read the following paragraph and list all the issues. 
@@ -123,5 +145,6 @@ print('Project Assets (Connections): {0}'.format(project.get_assets(asset_type='
 파일명을 수정하세요.
 예:```이름_Generated.csv```
 ```python
-project.save_data(data=df_1.to_csv(index=False), file_name='<my_name>_Generated.csv', overwrite=True
+project.save_data(data=df_1.to_csv(index=False), file_name='<my_name>_Generated.csv', overwrite=True)
+
 ```
