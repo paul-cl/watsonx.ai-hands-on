@@ -29,6 +29,17 @@ Instruction
 종료일 - 7월 15일
 ```
 
+chat 모드에서 실행
+```
+주어진 특성을 가진 회사에 대한 5문장 마케팅 메시지를 생성합니다.
+특성:
+회사소개 - 골든뱅크
+제안에는 수수료 없음, 5% 이자율, 최소 잔액 없음
+어조 – 정보 제공
+응답 요청 - 링크를 클릭하십시오.
+종료일 - 7월 15일
+```
+
 #### Freedom Mode (p15)
 prompt
 ```
@@ -39,10 +50,13 @@ I called your helpdesk
 multiple times and every time I waited 10-15 minutes before I gave up. The first time I got through, the line got cut suddenly and I had to call back. This is just not helpful. When I finally got through like after 3 days (yes, 3 days) your agent kept going over a long checklist of trivial things and asking me to verify, after I repeatedly told the agent that I am an experienced user and I know what I am doing. It was a complete waste of time. After like an eternity of this pointless conversation, I was told that an SME will contact me. That – was 2 days ago. What is the problem with your support system?
 
 ```
+
 문장 아래에 다음을 추가합니다.
 ```
 The list of issues is as follows:
 ```
+
+
 문장 아래에 다음을 추가합니다.
 ```
 1.
