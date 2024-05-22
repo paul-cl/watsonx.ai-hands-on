@@ -162,3 +162,104 @@ print('Project Assets (Connections): {0}'.format(project.get_assets(asset_type='
 project.save_data(data=df_1.to_csv(index=False), file_name='<my_name>_Generated.csv', overwrite=True)
 
 ```
+
+
+# Milvus DB를 활용한 RAG
+라이브러리 로드
+```
+from pymilvus import (
+    connections,
+    Collection
+)
+from sentence_transformers import SentenceTransformer
+from langchain.docstore.document import Document
+from langchain.chains.question_answering import load_qa_chain
+
+from ibm_watson_machine_learning.metanames import GenTextParamsMetaNames as GenParams
+from ibm_watson_machine_learning.foundation_models import Model
+from ibm_watson_machine_learning.foundation_models.extensions.langchain import WatsonxLLM
+```
+
+Milvus 검색 함수 정의하기  
+```
+def milvus_search(query, COLLECTION_NAME,embedding_model_name):
+    model_name = embedding_model_name
+    collection_name = COLLECTION_NAME
+    connections.connect("default", host=MILVUS_DB_HOST, port=MILVUS_DB_PORT) 
+    collection = Collection(collection_name)
+    collection.load()
+    search_params = {
+        "metric_type": "L2",
+        "params": {"ef": 10},
+    }
+    model = SentenceTransformer(model_name)
+    vectors_to_search = model.encode([query]).tolist()
+
+    result = collection.search(vectors_to_search, "vector", search_params,
+                                limit=3,
+                                output_fields=["text", "vector"],
+                                )
+
+    hits = result[0]
+    def text2doc(t):
+        return Document(page_content = t)
+
+    docs = [text2doc(h.entity.get('text')) for h in hits]
+    return docs
+```
+
+key 정보 설정
+```
+api_key = "rcsT3a6Rdll4oqXHUjpnvPIicYPHbz4EUxv4GxO_Yll9"
+# region에 따라 주소가 다를 수 있습니다. 주소를 확인해 주세요.
+ibm_cloud_url = "https://us-south.ml.cloud.ibm.com" 
+project_id = "2e7e0b6f-3604-4f2f-a609-b6bb09065bc5"
+
+if api_key is None or ibm_cloud_url is None or project_id is None:
+    raise Exception("One or more environment variables are missing!")
+else:
+    creds = {
+        "url": ibm_cloud_url,
+        "apikey": api_key 
+    }
+```
+
+모델 초기화
+```
+# watsonx google/flan-ul2 model 초기화
+params = {
+    GenParams.DECODING_METHOD: "sample",
+    GenParams.TEMPERATURE: 0.2,
+    GenParams.TOP_P: 1,
+    GenParams.TOP_K: 100,
+    GenParams.MIN_NEW_TOKENS: 50,
+    GenParams.MAX_NEW_TOKENS: 300
+}
+
+model_llm = Model(
+    model_id="meta-llama/llama-3-70b-instruct",
+    params=params,
+    credentials=creds,
+    project_id=project_id
+).to_langchain()
+```
+
+```
+user_input = "코로나 감염 증상은?"
+docs_search = milvus_search(user_input,COLLECTION_NAME,embedding_model_name)
+print(docs_search)
+```
+
+모델 결과물 생성하기 
+```
+chain_types = "stuff"
+# chain_types = "map_reduce"
+# chain_types = "refine"
+
+chain = load_qa_chain(model_llm, chain_type=chain_types)
+response = chain.run(input_documents=docs_search, question=user_input+". 한국어로 답하시오.")
+print(response)
+```
+
+```
+```
