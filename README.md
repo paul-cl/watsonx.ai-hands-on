@@ -226,7 +226,7 @@ else:
 
 모델 초기화
 ```
-# watsonx google/flan-ul2 model 초기화
+# watsonx model 초기화
 params = {
     GenParams.DECODING_METHOD: "sample",
     GenParams.TEMPERATURE: 0.2,
