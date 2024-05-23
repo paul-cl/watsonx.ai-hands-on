@@ -210,10 +210,10 @@ def milvus_search(query, COLLECTION_NAME,embedding_model_name):
 
 key 정보 설정
 ```
-api_key = "rcsT3a6Rdll4oqXHUjpnvPIicYPHbz4EUxv4GxO_Yll9"
+api_key = "<CLOUD_API_KEY>"
 # region에 따라 주소가 다를 수 있습니다. 주소를 확인해 주세요.
 ibm_cloud_url = "https://us-south.ml.cloud.ibm.com" 
-project_id = "2e7e0b6f-3604-4f2f-a609-b6bb09065bc5"
+project_id = "<MY_PROJECT_ID>"
 
 if api_key is None or ibm_cloud_url is None or project_id is None:
     raise Exception("One or more environment variables are missing!")
