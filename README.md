@@ -113,7 +113,7 @@ I am writing to express my dissatisfaction regarding my recent purchase from you
 ```
 output
 
-# lab2. Notebook Code 
+# lab3. Notebook Code 
 ### 마케팅 컨텐츠 반복으로 프롬프트 생성하는 코드(P50)
 ```python
 # df_1 'Instruction' 및 'Content' 열을 포함하는 DataFrame입니다.. 
@@ -164,7 +164,7 @@ project.save_data(data=df_1.to_csv(index=False), file_name='<my_name>_Generated.
 ```
 
 
-# Milvus DB를 활용한 RAG
+# lab5.Milvus DB를 활용한 RAG
 라이브러리 로드
 ```
 from pymilvus import (
