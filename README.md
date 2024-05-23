@@ -166,7 +166,7 @@ project.save_data(data=df_1.to_csv(index=False), file_name='<my_name>_Generated.
 
 # lab5.Milvus DB를 활용한 RAG
 라이브러리 로드
-```
+```python
 from pymilvus import (
     connections,
     Collection
@@ -181,7 +181,7 @@ from ibm_watson_machine_learning.foundation_models.extensions.langchain import W
 ```
 
 Milvus 검색 함수 정의하기  
-```
+```python
 def milvus_search(query, COLLECTION_NAME,embedding_model_name):
     model_name = embedding_model_name
     collection_name = COLLECTION_NAME
@@ -209,7 +209,7 @@ def milvus_search(query, COLLECTION_NAME,embedding_model_name):
 ```
 
 key 정보 설정
-```
+```python
 api_key = "<CLOUD_API_KEY>"
 # region에 따라 주소가 다를 수 있습니다. 주소를 확인해 주세요.
 ibm_cloud_url = "https://us-south.ml.cloud.ibm.com" 
@@ -225,7 +225,7 @@ else:
 ```
 
 모델 초기화
-```
+```python
 # watsonx model 초기화
 params = {
     GenParams.DECODING_METHOD: "sample",
@@ -244,14 +244,15 @@ model_llm = Model(
 ).to_langchain()
 ```
 
-```
+Milvus DB에 질의하기
+```python
 user_input = "코로나 감염 증상은?"
 docs_search = milvus_search(user_input,COLLECTION_NAME,embedding_model_name)
 print(docs_search)
 ```
 
 모델 결과물 생성하기 
-```
+```python
 chain_types = "stuff"
 # chain_types = "map_reduce"
 # chain_types = "refine"
