@@ -228,12 +228,14 @@ else:
 ```python
 # watsonx model 초기화
 params = {
-    GenParams.DECODING_METHOD: "sample",
-    GenParams.TEMPERATURE: 0.2,
-    GenParams.TOP_P: 1,
-    GenParams.TOP_K: 100,
+#     GenParams.DECODING_METHOD: "sample",
+#     GenParams.TEMPERATURE: 0.2,
+#     GenParams.TOP_P: 1,
+#     GenParams.TOP_K: 100,
+    GenParams.DECODING_METHOD: "greedy",
+    GenParams.TEMPERATURE:  0.7,
     GenParams.MIN_NEW_TOKENS: 50,
-    GenParams.MAX_NEW_TOKENS: 300
+    GenParams.MAX_NEW_TOKENS: 1000
 }
 
 model_llm = Model(
