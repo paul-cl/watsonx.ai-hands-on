@@ -113,6 +113,30 @@ I am writing to express my dissatisfaction regarding my recent purchase from you
 ```
 output
 
+##### System Prompt
+```
+You always answer the questions in Korean.
+```
+
+##### Memory in LLM
+freeform에서 실행
+
+chatmode에서 실행
+```
+CUSTOMER 테이블의 CUSTOER_ID 와 TRANSACTION 테이블의 CUSTOMER_ID를 조인하는 SQL 쿼리를 만들어줘.
+```
+
+```
+이 쿼리를 사용하여 Netezza DB에 접속해서 실행하는 파이썬 코드 작성해줘.
+```
+
+##### InstructLab
+chat mode에서 granite-13b-chat-v2 모델 선택
+```
+what is the area of circle with radius 6cm ?
+```
+
+
 # lab3. Notebook Code 
 ### 마케팅 컨텐츠 반복으로 프롬프트 생성하는 코드(P50)
 ```python
