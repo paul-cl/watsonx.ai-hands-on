@@ -120,6 +120,13 @@ You always answer the questions in Korean.
 
 ##### Memory in LLM
 freeform에서 실행
+```
+CUSTOMER 테이블의 CUSTOER_ID 와 TRANSACTION 테이블의 CUSTOMER_ID를 조인하는 SQL 쿼리를 만들어줘.
+```
+위 결과를 삭제후 다시 아래 프롬프트 실행
+```
+이 쿼리를 사용하여 Netezza DB에 접속해서 실행하는 파이썬 코드 작성해줘.
+```
 
 chatmode에서 실행
 ```
@@ -132,6 +139,7 @@ CUSTOMER 테이블의 CUSTOER_ID 와 TRANSACTION 테이블의 CUSTOMER_ID를 조
 
 ##### InstructLab
 chat mode에서 granite-13b-chat-v2 모델 선택
+area 영역에서 내용 확인
 ```
 what is the area of circle with radius 6cm ?
 ```
