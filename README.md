@@ -114,8 +114,9 @@ I am writing to express my dissatisfaction regarding my recent purchase from you
 output
 
 ##### System Prompt
+프롬프트 끝에 추가하여 기본 한글이 출력되게 한다.
 ```
-You always answer the questions in Korean.
+한국어로 답해 주세요. (한국어)
 ```
 
 ##### Memory in LLM
