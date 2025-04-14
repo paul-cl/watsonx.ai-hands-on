@@ -302,8 +302,8 @@ print(response)
 ### 토큰생성해서 환경변수에 담기  
 API 키 정보를 변경한 후 shell에서 실행합니다.   
 * ```<YOUR CLOUD API KEY>``` : IBM Cloud API Key 를 생성하여 사용합니다.
-    * IBM Cloud API Key는 IBM Cloud Console에서 생성할 수 있습니다.
-    * IBM Cloud API Key는 IAM > Access (IAM) > API keys에서 생성할 수 있습니다.
+    * IBM Cloud API Key는 IBM Cloud watsonx Console에서 생성할 수 있습니다.
+    * IBM Cloud API Key는 Administration > Access (IAM) > API keys에서 생성할 수 있습니다.
     * API Key는 IBM Cloud에서 제공하는 서비스에 대한 인증을 위해 사용됩니다.
     * 예 : 
         ```bash
