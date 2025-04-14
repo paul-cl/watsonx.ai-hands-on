@@ -297,7 +297,44 @@ response = chain.run(input_documents=docs_search, question=user_input+". 한국�
 print(response)
 ```
 
+# Agent AI 호출하기
+
+### 토큰생성해서 환경변수에 담기  
+API 키 정보를 변경한 후 shell에서 실행합니다.   
+* ```<YOUR CLOUD API KEY>``` : IBM Cloud API Key 를 생성하여 사용합니다.
+    * IBM Cloud API Key는 IBM Cloud Console에서 생성할 수 있습니다.
+    * IBM Cloud API Key는 IAM > Access (IAM) > API keys에서 생성할 수 있습니다.
+    * API Key는 IBM Cloud에서 제공하는 서비스에 대한 인증을 위해 사용됩니다.
+    * 예 : 
+        ```bash
+            apikey=dsgsdagasgas@dXZXZ134t5e5s
+        ``` 
+```bash
+export API_TOKEN=$(curl -s --insecure -X POST --header "Content-Type: application/x-www-form-urlencoded" --header "Accept: application/json" --data-urlencode "grant_type=urn:ibm:params:oauth:grant-type:apikey"  --data-urlencode "apikey=<YOUR CLOUD API KEY>" "https://iam.cloud.ibm.com/identity/token"  | jq -r '.access_token')
+
 ```
+
+### 호출하기  
+다음의 두개의 정보를 변경합니다.   
+* ```<질문>``` : 질문 내용
+    * 예 : 
+    ```json
+    {"content":"whaat is ai agent","role":"user"}
+    ```
+* ```<배포된 Agent URL 주소>``` : 배포한 에인전트 URL 주소. watsonx.ai의 deployment에서 확인할 수 있습니다. 
+    * 예 : 
+    ```json
+    "https://us-south.ml.cloud.ibm.com/ml/v4/deployments/7522e6e5-1c2f-4e87-8dcf-90a7b661300f/ai_service?version=2021-05-01"
+    ```
+
+```bash
+curl -X POST --header "Content-Type: application/json" --header "Accept: application/json" --header "Authorization: Bearer $API_TOKEN" \
+-d '{"messages":[{"content":"<질문>","role":"user"}]}' \
+"<배포된 Agent URL 주소>" \
+| jq -r '.choices[0].message.content' \
+| xargs -0 echo -e
 ```
+
+
 
 
