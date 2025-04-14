@@ -321,7 +321,7 @@ export API_TOKEN=$(curl -s --insecure -X POST --header "Content-Type: applicatio
     ```json
     {"content":"whaat is ai agent","role":"user"}
     ```
-* ```<배포된 Agent URL 주소>``` : 배포한 에인전트 URL 주소. watsonx.ai의 deployment에서 확인할 수 있습니다. 
+* ```<배포된 Agent URL 주소>``` : 배포한 에인전트 URL 주소. watsonx.ai의 deployment에서 확인할 수 있습니다. Stream URL이 아닌 AI Service URL을 사용합니다.
     * 예 : 
     ```json
     "https://us-south.ml.cloud.ibm.com/ml/v4/deployments/7522e6e5-1c2f-4e87-8dcf-90a7b661300f/ai_service?version=2021-05-01"
