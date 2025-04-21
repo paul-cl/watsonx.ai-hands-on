@@ -336,5 +336,19 @@ curl -X POST --header "Content-Type: application/json" --header "Accept: applica
 ```
 
 
+### agent 만들기
+맛집을 검색하고 예약하는 agent 플로어.
+```scss
+Input (user query)
+    ↓
+PromptTemplate (질의 전처리)
+    ↓
+LLM (답변 생성)
+    ↓
+Tools (맛집 검색 / 예약 기능)
+    ↓
+Output
+```
+
 
 
