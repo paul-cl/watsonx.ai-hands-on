@@ -316,7 +316,7 @@ export API_TOKEN=$(curl -s --insecure -X POST --header "Content-Type: applicatio
 
 ## 1. Prompt template 배포한 AI Service 호출하기  
 다음의 두개의 정보를 변경합니다.   
-* ```<번역할 문장>``` : 번역할 문장입니다. prmpt template에서 설정한 변수를 사용합니다.
+* ```<번역할 문장>``` : 번역할 문장입니다. watsonx.ai의 prompt template에서 설정한 변수를 사용합니다.
     * 예 : 
     ```json
         { "context": "IBM은 세계 최고의 AI 엔지니어와 기술을 보유한 AI 전문 기업입니다." }
