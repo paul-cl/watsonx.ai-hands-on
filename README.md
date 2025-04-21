@@ -299,7 +299,7 @@ print(response)
 
 # AI Service 호출하기
 
-## 토큰생성해서 환경변수에 담기  
+## 1. 토큰생성해서 환경변수에 담기  
 API 키 정보를 변경한 후 shell에서 실행합니다.   
 * ```<YOUR CLOUD API KEY>``` : IBM Cloud API Key 를 생성하여 사용합니다.
     * IBM Cloud API Key는 IBM Cloud watsonx Console에서 생성할 수 있습니다.
@@ -310,11 +310,11 @@ API 키 정보를 변경한 후 shell에서 실행합니다.
             apikey=dsgsdagasgas@dXZXZ134t5e5s
         ``` 
 ```bash
-export API_TOKEN=$(curl -s --insecure -X POST --header "Content-Type: application/x-www-form-urlencoded" --header "Accept: application/json" --data-urlencode "grant_type=urn:ibm:params:oauth:grant-type:apikey"  --data-urlencode "apikey=<YOUR CLOUD API KEY>" "https://iam.cloud.ibm.com/identity/token"  | jq -r '.access_token')
+export ACCESS_TOKEN=$(curl -s --insecure -X POST --header "Content-Type: application/x-www-form-urlencoded" --header "Accept: application/json" --data-urlencode "grant_type=urn:ibm:params:oauth:grant-type:apikey"  --data-urlencode "apikey=<YOUR CLOUD API KEY>" "https://iam.cloud.ibm.com/identity/token"  | jq -r '.access_token')
 
 ```
 
-## 1. Prompt template 배포한 AI Service 호출하기  
+## 2. Prompt template 배포한 AI Service 호출하기  
 다음의 두개의 정보를 변경합니다.   
 * ```<번역할 문장>``` : 번역할 문장입니다. watsonx.ai의 prompt template에서 설정한 변수를 사용합니다.
     * 예 : 
@@ -339,7 +339,7 @@ sed 's/^data: //' | \
 jq -r '.results[].generated_text'
 ```
 
-## 2. AutoRAG로 배포한 AI Service 호출하기  
+## 3. AutoRAG로 배포한 AI Service 호출하기  
 다음의 두개의 정보를 변경합니다.   
 * ```<질문>``` : 질의할 내용을 입력합니다.
     * 예 : 
