@@ -297,9 +297,9 @@ response = chain.run(input_documents=docs_search, question=user_input+". 한국�
 print(response)
 ```
 
-# Agent AI 호출하기
+# AI Service 호출하기
 
-### 토큰생성해서 환경변수에 담기  
+## 토큰생성해서 환경변수에 담기  
 API 키 정보를 변경한 후 shell에서 실행합니다.   
 * ```<YOUR CLOUD API KEY>``` : IBM Cloud API Key 를 생성하여 사용합니다.
     * IBM Cloud API Key는 IBM Cloud watsonx Console에서 생성할 수 있습니다.
@@ -314,29 +314,53 @@ export API_TOKEN=$(curl -s --insecure -X POST --header "Content-Type: applicatio
 
 ```
 
-### 호출하기  
+## 1. Prompt template 배포한 AI Service 호출하기  
 다음의 두개의 정보를 변경합니다.   
-* ```<질문>``` : 질문 내용
+* ```<번역할 문장>``` : 번역할 문장입니다. prmpt template에서 설정한 변수를 사용합니다.
     * 예 : 
     ```json
-    {"content":"whaat is ai agent","role":"user"}
+        { "context": "IBM은 세계 최고의 AI 엔지니어와 기술을 보유한 AI 전문 기업입니다." }
     ```
-* ```<배포된 Agent URL 주소>``` : 배포한 에인전트 URL 주소. watsonx.ai의 deployment에서 확인할 수 있습니다. Stream URL이 아닌 AI Service URL을 사용합니다.
+* ```<배포된 AI Service URL 주소>``` : 배포한 에인전트 URL 주소. watsonx.ai의 deployment에서 확인할 수 있습니다. Stream URL이 아닌 AI Service URL을 사용합니다.
     * 예 : 
     ```json
-    "https://us-south.ml.cloud.ibm.com/ml/v4/deployments/7522e6e5-1c2f-4e87-8dcf-90a7b661300f/ai_service?version=2021-05-01"
+    "https://us-south.ml.cloud.ibm.com/ml/v1/deployments/bdb1781c-8744-4b1f-af53-58c0dc53b0dc/text/generation_stream?version=2021-05-01"
     ```
 
 ```bash
-curl -X POST --header "Content-Type: application/json" --header "Accept: application/json" --header "Authorization: Bearer $API_TOKEN" \
--d '{"messages":[{"content":"<질문>","role":"user"}]}' \
-"<배포된 Agent URL 주소>" \
+curl -X POST \
+  --header "Content-Type: application/json" \
+  --header "Accept: application/json" \
+  --header "Authorization: Bearer $ACCESS_TOKEN" \
+  -d '{ "parameters": { "prompt_variables": { "context": "<번역할 문장>" } } }' \
+  "<배포된 AI Service URL 주소>" | \
+grep '^data: ' | \
+sed 's/^data: //' | \
+jq -r '.results[].generated_text'
+```
+
+## 2. AutoRAG로 배포한 AI Service 호출하기  
+다음의 두개의 정보를 변경합니다.   
+* ```<질문>``` : 질의할 내용을 입력합니다.
+    * 예 : 
+    ```json
+        {"content":"생성형 AI란?","role":"user"}
+    ```
+* ```<배포된 AI Service URL 주소>``` : 배포한 에인전트 URL 주소. watsonx.ai의 deployment에서 확인할 수 있습니다. Stream URL이 아닌 AI Service URL을 사용합니다.
+    * 예 : 
+    ```json
+    "https://us-south.ml.cloud.ibm.com/ml/v4/deployments/14c7e962-9bc0-41cd-b845-fa47ba5f0100/ai_service?version=2021-05-01"
+    ```
+
+```bash
+curl -X POST --header "Content-Type: application/json" --header "Accept: application/json" --header "Authorization: \
+ Bearer $ACCESS_TOKEN" -d '{"messages":[{"content":"<질문>","role":"user"}]}' "<배포된 AI Service URL 주소>" \
 | jq -r '.choices[0].message.content' \
 | xargs -0 echo -e
 ```
 
 
-### agent 만들기
+# agent 만들기
 맛집을 검색하고 예약하는 agent 플로어.
 ```scss
 Input (user query)
