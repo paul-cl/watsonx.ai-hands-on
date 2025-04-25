@@ -297,6 +297,49 @@ response = chain.run(input_documents=docs_search, question=user_input+". 한국�
 print(response)
 ```
 
+# prompt template 만들기
+## Prompt template 만들기
+
+### 1. model 선택하기
+```
+llama-4-maverick-17b-128e-instruct-fp8
+```
+
+### 2. Instruction 입력
+```
+주어진 한글문장을 영어로 번역하시오 .
+```
+
+### 3. Example 입력
+
+Example 1 text 입력
+```
+마지막으로, 의회에서 인권 문제를 다루는 방식을 검토할 것을 요구하는 16항을 환영합니다.
+```
+
+Example 1 Translation 입력
+```
+Finally, I welcome paragraph 16 which calls for a review of the way we deal with human rights issues in Parliament.
+```
+
+Example 2 text 입력
+```
+저는 룩셈부르크에서 열린 어느 세션에서 이 주제를 논의했던 걸 잘 기억합니다.
+```
+
+Example 2 Translation 입력
+```
+I remember very well that we discussed it in a session in Luxembourg.
+```
+
+### 4. 변수 입력
+context 변수 생성후 test your prompt 에 생성한 변수명을 입력 합니다.
+```
+{context}
+```
+
+
+
 # AI Service 호출하기
 
 ## 1. 토큰생성해서 환경변수에 담기  
