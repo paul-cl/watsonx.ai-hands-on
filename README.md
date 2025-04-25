@@ -378,7 +378,7 @@ curl -X POST \
   -d '{ "parameters": { "prompt_variables": { "context": "<번역할 문장>" }, "stop_sequences": ["질문:", "\\n\\n"] } }' \
   "<배포된 AI Service URL 주소>" \
   | jq -r '.results[0].generated_text | split("\n") | .[0]' \
-  | (echo "" && cat)
+  | (echo -e "\n\n결과 : $(cat)")
 ```
 
 ## 3. AutoRAG로 배포한 AI Service 호출하기  
