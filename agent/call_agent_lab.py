@@ -14,7 +14,7 @@ import re
 ENDPOINT = "https://us-south.ml.cloud.ibm.com/ml/v4/deployments/edff89c5-9c4b-4d6b-baad-5510bb3de112/ai_service_stream?version=2021-05-01"
 
 # API 키 설정 (IBM Cloud에서 발급받은 API 키로 대체)
-API_KEY = "nWZEsxTOIpYZbvKx9aPJzTBHo8ojvPG1zG82X3tnnHB8"
+API_KEY = "<CLOUD_API_KEY>"
 
 # IAM 토큰 요청
 try:
