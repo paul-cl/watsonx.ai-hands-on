@@ -1,3 +1,6 @@
+### general ###
+/agent/agent_cli
+
 ### STS ###
 .apt_generated
 .classpath
