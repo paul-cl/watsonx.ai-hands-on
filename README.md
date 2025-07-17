@@ -308,7 +308,11 @@ print(response)
 llama-4-maverick-17b-128e-instruct-fp8
 ```
 
-### 2. Instruction 입력
+### 2. 문서 선택
+학생성장진단도구_현황_분석_연구.pdf 문서를 선택합니다.   
+
+### 3. System Prompt 입력
+맨 마지막에 System Promt를 작성합니다.   
 ```
 You are a strategic analyst reviewing a report. Your goal is to:
 1. Summarize the key points and insights from the report.
@@ -320,13 +324,24 @@ Guidelines:
 - Be critical but constructive
 - Keep the questions open-ended and thought-provoking
 - Make sure the new report ideas are actionable and aligned with the original context
+- Please make sure to write the entire response in Korean. All content, including summaries, questions, and suggestions, must be written in Korean.
+
 
 Input Report:
 
 ```
 
-### 3. 테스트 진행
+### 4. 테스트 진행
 ```
+첨부한 문서의 주요 내용을 요약해줘.
+```
+```
+이 연구 내용을 바탕으로 추가 연구할 수 있는 주제를 알려줘.
+```
+
+### 5. 저장하기
+```
+문서 요약 및 제안 서비스
 ```
 
 
@@ -339,7 +354,10 @@ Input Report:
 llama-4-maverick-17b-128e-instruct-fp8
 ```
 
-### 2. Instruction 입력
+### 2. 문서 선택
+학생성장진단도구_현황_분석_연구.pdf 문서를 선택합니다.   
+
+### 3. System Prompt 입력
 ```
 You are a professional business analyst. Write a clear, well-structured report based on the following input. 
 
@@ -356,15 +374,26 @@ Guidelines:
 - Format: Use bullet points and subheadings for clarity where appropriate
 - Emphasize key data, insights, and actions
 - Length: No more than 800 words
+- Please make sure to write the entire response in Korean. All content, including summaries, questions, and suggestions, must be written in Korean.
+
 
 Input: 
 
 
 ```
 
-### 3. 테스트 진행
+### 4. 테스트 진행
 ```
+"진단도구의 표준화 및 타당성 분석: 다양한 진단도구의 표준화 및 타당성을 비교 분석하여, 학교 현장에서 효과적으로 사용할 수 있는 도구를 제안하는 보고서."
+
+에 대해 보고서 초안 생성해줘.
 ```
+
+```
+3.Key Findings or Analysis 에 대허 더 세부적인 내용 작성해줘.
+```
+
+
 
 
 
