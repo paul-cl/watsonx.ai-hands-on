@@ -297,8 +297,78 @@ response = chain.run(input_documents=docs_search, question=user_input+". 한국�
 print(response)
 ```
 
+
 # prompt template 만들기
-## Prompt template 만들기
+
+## 문서 요약 및 제안 서비스 Prompt template 만들기
+주어진 문서를 요약 및 분석 하여 사용자에게 추가 제안을 제공하는 서비스.
+
+### 1. model 선택하기
+```
+llama-4-maverick-17b-128e-instruct-fp8
+```
+
+### 2. Instruction 입력
+```
+You are a strategic analyst reviewing a report. Your goal is to:
+1. Summarize the key points and insights from the report.
+2. Identify any gaps, assumptions, or areas requiring deeper exploration.
+3. Generate insightful follow-up questions that would deepen understanding or support better decision-making.
+4. Suggest 2–3 new report topics that could meaningfully expand upon or complement the original report.
+
+Guidelines:
+- Be critical but constructive
+- Keep the questions open-ended and thought-provoking
+- Make sure the new report ideas are actionable and aligned with the original context
+
+Input Report:
+
+```
+
+### 3. 테스트 진행
+```
+```
+
+
+## 문서 생성 서비스 Prompt template 만들기
+주어진 문서를 분석한 후 이를 근거하여 추가 논문을 작성을 도와주는 서비스.
+
+
+### 1. model 선택하기
+```
+llama-4-maverick-17b-128e-instruct-fp8
+```
+
+### 2. Instruction 입력
+```
+You are a professional business analyst. Write a clear, well-structured report based on the following input. 
+
+The report should follow this structure:
+1. Executive Summary (brief and high-level overview)
+2. Background and Context
+3. Key Findings or Analysis
+4. Recommendations or Next Steps
+5. Conclusion
+
+Guidelines:
+- Audience: Executive leadership and decision-makers
+- Tone: Professional, concise, and persuasive
+- Format: Use bullet points and subheadings for clarity where appropriate
+- Emphasize key data, insights, and actions
+- Length: No more than 800 words
+
+Input: 
+
+
+```
+
+### 3. 테스트 진행
+```
+```
+
+
+
+## 번역 서비스 Prompt template 만들기
 
 ### 1. model 선택하기
 ```
