@@ -1,6 +1,7 @@
 # watsonx.ai-hands-on
 watsonx.ai hands-on lab 자료입니다.
 
+
 ### IBM에서 제공하는 모델 정보
 https://dataplatform.cloud.ibm.com/docs/content/wsj/analyze-data/fm-models.html?context=wx&audience=wdp
 
